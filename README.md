@@ -1,5 +1,7 @@
 # SWE-bench Regression Evaluator
 
+Re-scores SWE-bench patches to separate fixes that broke other tests from real failures.
+
 ## How it is different
 
 SWE-bench runs two sets of tests per instance:
