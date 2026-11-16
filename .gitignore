@@ -1,4 +1,4 @@
-# Regression-Benchmark — WHITELIST.
+# Regression-Benchmark: whitelist.
 # Ignore everything, then re-include only the curated deliverables. This
 # guarantees no log, virtualenv, Django git mirror, downloaded dataset, Docker
 # artefact, or any large file (>1 MB) can ever be tracked — only the files
@@ -10,13 +10,14 @@
 !/.gitignore
 !/README.md
 !/kt_bucket.py
+!/LICENSE
 
-# patches/ — only the mirror patch
+# patches/: only the mirror patch
 !/patches
 /patches/*
 !/patches/swebench-git-mirror.patch
 
-# results/ — only the two curated result reports
+# results/: only the two curated result reports
 !/results
 /results/*
 !/results/random_sample_25_django.json
