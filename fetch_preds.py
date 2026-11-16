@@ -2,8 +2,8 @@
 """Download the published OpenHands + Claude Opus 4.5 predictions for SWE-bench Verified and keep
 the 25 sampled instances listed in kt_selection.json. Writes kt_preds.jsonl for the harness.
 
-Source: the submission's all_preds.jsonl in the public swe-bench-submissions bucket, the one
-referenced by evaluation/verified/20251127_openhands_claude-opus-4-5/metadata.yaml in
+Source: the submission's all_preds.jsonl, in the same public bucket as the logs listed in
+evaluation/verified/20251127_openhands_claude-opus-4-5/metadata.yaml in
 github.com/SWE-bench/experiments.
 """
 import json
