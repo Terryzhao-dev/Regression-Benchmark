@@ -1,7 +1,7 @@
 # Regression-Benchmark: whitelist.
 # Ignore everything, then re-include only the curated deliverables. This
 # guarantees no log, virtualenv, Django git mirror, downloaded dataset, Docker
-# artefact, or any large file (>1 MB) can ever be tracked — only the files
+# artefact, or any large file (>1 MB) can ever be tracked: only the files
 # explicitly un-ignored below are committable.
 
 # Ignore all top-level entries...
@@ -11,6 +11,8 @@
 !/README.md
 !/kt_bucket.py
 !/LICENSE
+!/fetch_preds.py
+!/kt_selection.json
 
 # patches/: only the mirror patch
 !/patches
