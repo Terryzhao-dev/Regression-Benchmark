@@ -4,7 +4,6 @@ import json, glob, os, sys
 
 RUN_ID = "kt_openhands_opus45"
 LOG_DIR = os.path.join("logs", "run_evaluation", RUN_ID)
-sel = {r["instance_id"]: r for r in json.load(open("kt_selection.json"))}
 want = [json.loads(l)["instance_id"] for l in open("kt_preds.jsonl") if l.strip()]
 
 def find_report(iid):
@@ -34,22 +33,19 @@ for iid in want:
     else:
         clean.append(iid)
 
-def tag(iid): return f"{iid} [{sel.get(iid,{}).get('version','?')}, submission={sel.get(iid,{}).get('submission_bucket','?')}]"
-
 print("="*72)
-print(f"KILL TEST — OpenHands + Claude Opus 4.5  |  {len(want)} instances, harness re-run")
+print(f"Kill test: OpenHands + Claude Opus 4.5 |  {len(want)} instances, harness re-run")
 print("="*72)
 print(f"\n(a) CLEAN RESOLVE  (all FAIL_TO_PASS pass, all PASS_TO_PASS pass): {len(clean)}")
-for i in clean: print("     ", tag(i))
+for i in clean: print("     ", i)
 print(f"\n(b) FIXED-BUT-BROKE (all FAIL_TO_PASS pass, >=1 PASS_TO_PASS FAILS): {len(broke)}")
 for i, fails in broke:
-    print("     ", tag(i))
+    print("     ", i)
     for t in fails: print("           BROKE PASS_TO_PASS:", t)
 print(f"\n(c) NOT FIXED  (FAIL_TO_PASS still failing): {len(notfixed)}")
-for i, why in notfixed: print("     ", tag(i), "->", why)
+for i, why in notfixed: print("     ", i, "->", why)
 if noeval:
     print(f"\n[!] NOT EVALUABLE (set aside): {len(noeval)}")
-    for i, why in noeval: print("     ", tag(i), "->", why)
+    for i, why in noeval: print("     ", i, "->", why)
 print("\n" + "-"*72)
 print(f"TOTAL: clean={len(clean)}  fixed-but-broke={len(broke)}  not-fixed={len(notfixed)}  noeval={len(noeval)}  (sum={len(clean)+len(broke)+len(notfixed)+len(noeval)}/{len(want)})")
-print("Regression phenomenon present?", "YES" if broke else "no cases in this sample")

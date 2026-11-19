@@ -1,8 +1,4 @@
-# Regression-Benchmark: whitelist.
-# Ignore everything, then re-include only the curated deliverables. This
-# guarantees no log, virtualenv, Django git mirror, downloaded dataset, Docker
-# artefact, or any large file (>1 MB) can ever be tracked: only the files
-# explicitly un-ignored below are committable.
+# Whitelist: only the files listed below are tracked.
 
 # Ignore all top-level entries...
 /*
